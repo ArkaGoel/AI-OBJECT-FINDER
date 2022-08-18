@@ -1,0 +1,57 @@
+body {
+    background-image: url('background.jpg');
+    background-position: relative;
+    background-size: cover;
+}
+
+#head {
+    width: 100%;
+    margin: 0;
+    font-size: 23px;
+}
+
+.copy_right_footer {
+    width: 100%;
+    background-color: gray;
+    bottom: 0;
+    line-height: 3;
+    color: azure;
+    position: fixed;
+}
+
+#label_in {
+    color: azure;
+}
+
+#start,
+#status,
+#objects_detected {
+    font-size: 23px;
+}
+
+#head,
+#status,
+#objects_detected {
+    cursor: auto;
+
+}
+
+canvas,
+video {
+    margin-top: 130px;
+    border: 2px solid black;
+    border-radius: 20px;
+    animation-name: canvas;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes canvas {
+    from {
+        box-shadow: 2px 2px 2px red;
+    }
+
+    to {
+        box-shadow: 5px 5px 5px blue;
+    }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.jesdeliver.net/npm/p5@1.0.0/lib/addons/p5.sound.min.js"></script>
+  </head>
+  <body>
+    <center>
+      <h1 class="btn btn-warning" id="head">AI Object Finder
+        <br>
+        <label class="label">The input name you will give should match the names present in CoCoSSD model then only it will detect</label>
+      </h1>
+      <br /><br />
+      <label id="label_in"
+        >Enter the object for detection:
+        <input type="text" id="Object" class="form-control"
+      /></label>
+      <br /><br />
+      <button class="btn btn-success" id="start" onclick="start()">
+        Start
+      </button>
+      <br />
+      <button class="btn btn-danger" id="status"></button>
+      <button class="btn btn-primary" id="objects_detected"></button>
+      <div class="copy_right_footer">Developed by Arka Goel</div>
+    </center>
+  </body>
+</html>
