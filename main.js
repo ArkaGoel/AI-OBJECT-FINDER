@@ -1,6 +1,8 @@
 let state = false;
+var speechSynthesis = window.speechSynthesis;
+var speech = new speechSynthesis();
 var objects = [];
-input = document.getElementById("Object");
+
 
 function preload() {
 
@@ -8,13 +10,13 @@ function preload() {
 
 function start() {
     objectDetector = ml5.objectDetector('cocossd', modelLoaded);
+    input = document.getElementById("Object").value;
+    document.getElementById("status").innerHTML = "Status- Detecting Objects...";
 }
 
 function modelLoaded() {
     console.log("CoCoSSD Initialized!");
-    document.getElementById("status").innerHTML = "Status- Detecting Objects...";
     state = true;
-    objectDetector.detect(video, gotResults);
 }
 
 function setup() {
@@ -37,19 +39,30 @@ function draw() {
     image(video, 0, 0, 500, 380);
     if (state != "") {
         for (i = 0; i < objects.length; i++) {
-            if (objects[i] == input) {
-                r = random(255);
-                g = random(255);
-                b = random(255);
-                fill(r, g, b);
-                noFill();
-                per = floor(objects[i].confidence * 100);
-                stroke(r, g, b);
-                text(objects[i].label + " " + per + "%", objects[i].x + 15, objects[i].y + 15);
-                rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+            objectDetector.detect(video, gotResults);
+            r = random(255);
+            g = random(255);
+            b = random(255);
+            fill(r, g, b);
+            noFill();
+            per = floor(objects[i].confidence * 100);
+            stroke(r, g, b);
+            text(objects[i].label + " " + per + "%", objects[i].x + 15, objects[i].y + 15);
+            rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+            if (objects[i].label == input) {
+                video.stop();
+                objectDetector.detect(gotResults);
+                var utterThis = input;
+                var utterance = SpeechSynthesisUtterance;
+                utter = new SpeechSynthesisUtterance(input + " Found");
+                speech.utter(utterThis);
             } else {
-                document.getElementById("Object").innerHTML = "Please enter a value";
+                document.getElementById("status").innerHTML = input + " Not Found";
             }
         }
     }
+}
+
+function speak() {
+
 }
